@@ -1,0 +1,353 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMasterPage.master.cs" Inherits="Admin_AdminMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%--<script type = "text/javascript" >
+    function disableBackButton() {
+        window.history.forward();
+    }
+    setTimeout("disableBackButton()", 0);
+</script>--%>
+<head runat="server">
+<title>	[Organization Name] </title>
+<link rel="stylesheet" href="../css/Layout.css" type="text/css" />
+<link rel="stylesheet" href="../css/cal.css" type="text/css" />
+<script type="text/javascript" src="../js/datetimepicker.js"></script>
+<script type="text/javascript" src="../js/md5-min.js"></script>
+<link href="../SKN/Style.css" rel="stylesheet" type="text/css" />
+ <script type="text/javascript" language="JavaScript" src="script/calendar_eu.js"></script>
+	<link rel="stylesheet" type="text/css" href="script/calendar.css"/>
+  <asp:ContentPlaceHolder id="head" runat="server">
+ 
+    </asp:ContentPlaceHolder>
+</head>
+<body onload="timeimgs('2')"; oncontextmenu="return false"; >
+   <form id="form1" runat="server">
+   <asp:ScriptManager ID="ScriptManager1" runat="server" />
+<div id="loginheader">
+            <div id="loginboxheader1">
+                <table border="0" cellpadding="0" cellspacing="0" width="1000px">
+                    <tr>
+                        <td width="25%" valign="top">
+                            <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td valign="top" bgcolor="#FF3300">
+                                        <img src="../images/rssh.png" alt="" height="70px" />                                       
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </td>
+                        <td width="53%" valign="top" bgcolor="#FF3300">
+                            <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>
+                                        <h2 align="center">
+                                        
+                                        <h1 align="center">
+                                            <span id="Label5" style="font-size:X-Large;"></span>&nbsp;</h1>
+                                        <h3 align="center" style="color: #00008b">
+                                            <span id="lblheading" style="font-size:Large;text-decoration:none;"></span>
+                                        </h3>
+                                        <h3 align="center" style="color: #00008b">
+                                            
+                                        </h3>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="22%" valign="top" align="right" bgcolor="#FF3300">
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td width="20%" valign="top">
+                                        <div>
+                                            <h1 class="Grey_Table" style="text-align: center;">                                                
+                                                <span style="left: 0px; top: 0px">[Organization Name] MENU</span>
+                                            </h1>
+                                            <div class="brd_LR_innber pad" style="background-color: #d8e4f8; height: 600px;">
+                                                    <table>
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="lnkdaiylreport" href="AdminHome.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Home</a>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A1" href="Registration.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Registration</a>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A2" href="OrganizationMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Organization Master</a>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A28" href="CountryMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Rashtra Master</a>
+                                                        </td>
+                                                </tr>
+                                               <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A29" href="KshetraMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Zone/Kshetra Master</a>
+                                                        </td>
+                                                </tr> 
+                                                 <%--<tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A7" href="ZoneMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Zone Master</a>
+                                                        </td>
+                                                </tr> --%>
+                                                  <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A3" href="StateMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Prant Master</a>
+                                                        </td>
+                                                </tr> 
+                                                
+                                                 <%-- <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A30" href="VibhagMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Vibhag Master</a>
+                                                        </td>
+                                                </tr> 
+                                               --%>
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A18" href="LoksabhaMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Loksabha Master</a>
+                                                        </td>
+                                                </tr>
+                                                          <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A4" href="DistrictMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">District Master</a>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A5" href="CityMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Vidhansabha Master</a>
+                                                        </td>
+                                                </tr>
+                                                              <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A20" href="TehsilMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Tehsil Master</a>
+                                                        </td>
+                                                </tr>
+                                               
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A19" href="NagarMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Nagar Master</a>
+                                                        </td>
+                                                </tr>
+                                          
+                                           <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A6" href="upnagarmaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">UpNagar/Bhag master</a>
+                                                        </td>
+                                                </tr>
+                                          
+                                                <%--<tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A6" href="VillageMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Village Master</a>
+                                                        </td>
+                                                </tr>--%>
+                                               
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A21" href="QualificationMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Qualification Master</a>
+                                                        </td>
+                                                </tr>                                            
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A8" href="SpecializationMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Specialization Master</a>
+                                                        </td>
+                                                </tr>
+                                                
+                                                 <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A9" href="SubSpeclMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Sub Specialization</a>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A10" href="Sub_SubSpeclMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Sub Sub Specialization</a>
+                                                        </td>
+                                                </tr>
+                                                 <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A12" href="OccupationMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Occupation Master</a>
+                                                        </td>
+                                                </tr> 
+                                                  <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A17" href="DesignationMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Designation Master</a>
+                                                        </td>
+                                                </tr>
+                                               <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A22" href="CurricularActivityMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Curricular Activity Master</a>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A23" href="HobbyMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Hobby Master</a>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                        <br /> 
+                                                            <asp:Label ID="Label1" runat="server" Text="Master Specific to organization" Font-Bold="True" Font-Size="9"></asp:Label>
+                                                         
+                                                        </td>
+                                                </tr>
+                                                                                             
+                                                <tr>
+                                                        <td>
+                                                        <br /> 
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A11" href="VarshMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Organization training Master</a>
+                                                        </td>
+                                                </tr>
+                                                 <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A27" href="LevelMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Level Master</a>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A16" href="RSSDesignationMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">ORG designation Master</a>
+                                                        </td>
+                                                </tr>
+                                                 <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A13" href="WorkAreaMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Vicharpariwar Master</a>
+                                                        </td>
+                                                </tr>
+                                                 <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A15" href="WorkAssignMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Work Assign Master</a>
+                                                        </td>
+                                                </tr>
+                                                 <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A24" href="OccasionMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Occasion Master</a>
+                                                        </td>
+                                                </tr>
+                                               <%--  <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A25" href="QualificationMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Qualification Master</a>
+                                                        </td>
+                                                </tr>
+                                                 <tr>
+                                                        <td>
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A26" href="SanghShikshaMaster.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Sangh Siksha Master</a>
+                                                        </td>
+                                                </tr>--%>
+                                               
+                                                <tr>
+                                                        <td>
+                                                         <br /> 
+                                                            <img src="../images/arrow-right.gif" />
+                                                            <a id="A14" href="ReportHome.aspx" style="color:DarkBlue;font-size:12px;font-weight:bold;text-decoration:none;">Reports</a>
+                                                        </td>
+                                                </tr>
+                                               </table> 
+                                            </div>
+                                            <div class="Grey_Table" style="background-color: #d8e4f8;">
+                                                                                           
+                                            </div>
+                                        </div>
+                                    </td>            
+                                     <td valign="top" style="width: 1%">
+                                     </td>                       
+                                    <td width="79%" height="100%" valign="top">
+                                    <div>
+                                                        <h1 class="Grey_Table" style="text-align: center;" >
+                                                            <span style="left: 0px; top: 0px">Welcome : [Organization Name]- Admin
+                                                                                                                      
+                                                                <asp:LinkButton ID="lnk_btn" runat="server" onclick="lnk_btn_Click">Logout</asp:LinkButton>
+                                                            </span></h1>
+                                                        <div class="brd_LR_innber pad" 
+                                                            style="background-color: #d8e4f8;" align="center">
+                                                             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">        
+ 
+                                                             </asp:ContentPlaceHolder>                                                  
+                                                        </div>
+                                                        <div class="Grey_Table">
+                                                            <div>
+                                                            </div>
+                                                        </div>
+                                    </div>
+                                       
+                                    </td>
+                                </tr>                                
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td width="40%" valign="top">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" align="center">
+                            <div id="footer">
+                            <span>
+                               <font color="darkolivegreen" size="2"><p align="right"><font color="darkolivegreen" size="2">Site Designed & Developed By [Company Name]</font></p></font>
+                               </span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+</form>
+</body>
+</html>
+

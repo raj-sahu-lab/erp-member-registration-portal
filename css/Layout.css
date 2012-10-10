@@ -1,0 +1,533 @@
+﻿/* 	REQUIRED PADDINGS / MARGINS 
+**********************************************************/
+/*body 				{font:normal 12px Verdana !important; color:#737373; text-align:left; background:#b9e9fb url(../images/pageBg.png) repeat-x top;}*/
+* {padding:0; margin:0}
+body {font:12px Verdana, Arial, Helvetica;
+	 
+	background:#d8e4f8;
+	
+	}
+.padOne					{padding:3px;}
+.padOne2					{padding:1px;}
+
+.Det1
+{
+background-color: #e7eff7;
+	
+	font-size: 12px;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+}
+
+.Det2
+{
+	background-color: #f0f5fa;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	font-size: 12px;
+}
+
+.TdTitle
+{
+	background-color:#1ea8dc;
+	color:#FFFFFF;
+	font-weight: bold;
+	padding:3 0 10px 0; font-size:14px; 
+}
+.TDSubtitle
+{
+	background-color:#1ea8dc;
+	color:#FFFFFF;
+	font-weight: bold;
+	padding:3 0 10px 0; font-size:12px; 
+}
+
+#nextCont {min-height:360px;}
+
+.Loginbox {width:350px; margin:0px auto;}
+.padtop2	{padding-top:50px;}
+
+.rtop, .rbottom{display:block; }
+.rtop *, .rbottom *{display: block; height: 1px; overflow: hidden}
+.r1{margin: 0 5px; background:#1ea8dc;}
+.r2{margin: 0 3px; background:#1ea8dc;}
+.r3{margin: 0 2px; background:#1ea8dc;}
+.r4{margin: 0 1px; height: 2px; background:#1ea8dc;}
+/*.contain{background:#99cccc;text-align:center;}*/
+.contain{background:#b0c4de;}
+
+  .sidebar {
+ float:left;
+ width:170px;
+ padding:10px;
+ background:#4682b4;
+ min-height:460px;
+ }
+ 
+ .rightsidebar {
+ float:right;
+ width:170px;
+ padding:10px;
+ background:#4682b4;
+ min-height:460px;
+ }
+ 
+ .sidebarbasedata {
+ float:right;
+ width:200px;
+ padding:10px;
+ background:#4682b4;
+ min-height:60px;
+ }
+
+    #nav ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    }
+    #nav li {
+    display:inline;
+    margin:0;
+    padding:0;
+   }
+
+/* Layout for Menu Item*/
+.nextCont2 {min-height:40px;}
+.Loginbox2 {width:160px; margin:0px auto;}
+.padtop22	{padding-top:5px;}
+.contain2 {background:#b0c4de;}
+.fontlay{/*color:#FFFFFF;*/
+	font-weight: bold;
+	font-size:12px; }
+	
+	
+.lnkbtn 
+{
+	color: #dc143c;
+}
+.lnkbtn2 
+{
+	color: #003399;
+}
+/*
+.lnkbtn a:visited
+{
+	color: #fff;
+}*/
+/* Layout for Menu Item*/
+#header {
+	
+	margin: auto; 
+	padding: 0px; width: 980px;
+	padding-top:0px;
+	padding-left:0px;
+	padding-right:0px;
+	border-top : 2px solid black ;
+	border-left : 2px solid black ;
+	border-bottom: 2px solid black ;
+	border-right: 2px solid black ;
+
+}
+h1 {
+	font-size:28px;
+	color:#00008b;
+	/*background-color:#FFFFFF;*/
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	font-weight:300;
+}
+h2 {
+	font-size:20px;
+	color:#000080;
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	font-weight:300;
+	/*background-color:#FFFFFF;*/
+}
+.rdopadding
+{
+  padding:0px 0px 10px 0px;	}
+  
+
+.menustyle					
+{
+	/*font-size:14px;*/
+	color:#d60000;
+}
+.menustyle2					
+{
+	/*font-size:14px;*/
+	color:#009900;
+}
+.menustyle3					
+{
+	font-size:14px;color:#740000;
+}
+
+.orangecolor
+{
+  font-size:12px;color:#ff9900;
+}
+.redcolor
+{
+ font-size:12px;color:#d60000;
+}
+.greencolor
+{
+ font-size:12px;color:#009900;
+}
+
+/* Layout for Base Data Menu Item*/
+.nextCont3 {min-height:10px;}
+.Loginbox3 {width:200px; margin:0px auto;}
+.padtop23	{padding-top:0px;}
+.contain3 {background:#b0c4de;}
+.fontlay3{/*color:#FFFFFF;*/
+	font-weight: bold;
+	font-size:12px; }
+	
+	
+.basemenustyle					
+{
+	font-size:12px;color:#d60000;
+}
+.basemenustyle2					
+{
+	font-size:12px;color:#009900;
+}
+
+#ctl00_HyperLink1 {
+	color:#cc0000;
+	text-decoration:none;
+}
+#ctl00_HyperLink1:hover {
+	color:#cc0000;
+	text-decoration:underline;
+}
+
+img { border: 0; }
+
+#header2 {
+	
+	 
+	/*padding-top:0px;
+	padding-left:15px;
+	padding-right:15px;*/
+	margin: auto; 
+	/*padding: 10px;*/
+	 width: 100%;
+	
+	border-top : 2px solid black ;
+	border-left : 2px solid black ;
+	border-bottom: 2px solid black ;
+	border-right: 2px solid black ;
+}
+#repbody
+{
+	font:12px Verdana, Arial, Helvetica;
+	background-color:White;
+}
+
+ .repbar {
+ float:right;
+ text-align:center;
+ width:200px;
+ padding:10px;
+ background:#4682b4;
+ min-height:400px;
+ }
+ #divrep {min-height:250px;}
+ 
+ #loginheader {
+	 padding-top :5px;
+     padding-bottom :5px;	
+}
+#loginboxheader
+{
+  	background-color:White; 
+  	margin: auto; padding: 5px; width: 1000px;
+  	border-top : 2px solid black ;
+	border-left : 1px solid black ;
+	border-bottom: 2px solid black ;
+	border-right: 1px solid black ;
+	height:640px;
+}
+#loginboxheader1
+{
+  	background-color:White; 
+  	margin: auto; padding: 5px; width: 1000px;
+  	border-top : 2px solid black ;
+	border-left : 1px solid black ;
+	border-bottom: 2px solid black ;
+	border-right: 1px solid black ;
+	height:830px;
+}
+h1.Grey_Table		{background:url(../images/grey_table.gif) left top; margin:0; height:33px; padding-left:10px;}
+h1.Grey_Table span	{background:url(../images/grey_table.gif) right top; height:25px; color:#3b3b3b; font:bold 13px Arial; padding-top:8px; display:block; position:relative;}
+h1.Grey_Table span a	{position:absolute; right:0; padding-right:10px;}
+.Grey_Table			{background:#fff url(../images/grey_table.gif) no-repeat left -36px; margin:0; padding-left:10px; height:10px}
+.Grey_Table div		{background:#fff url(../images/grey_table.gif) no-repeat right -36px; padding:3px 10px 7px 0;}
+div.brd_LR				{background:#fff; border:solid 1px #9f9f9f; border-width:0 1px; padding:10px; font:normal 11px verdana; color:#3B3B3B;}
+div.brd_LR_innber
+{
+	background-position: #fff;
+	background: #fff;
+	border: solid 1px #9f9f9f;
+	border-width: 0 1px;
+	font: normal 12px verdana;
+	color: #3B3B3B;
+}
+
+/* 	FOOTER 	(id=FOOTER)
+**********************************************************/
+#footer 						{background:url('../images/footer_bg.gif') repeat-x 50% top; 
+margin-top:12px; text-align:center; float:left; width:100%; padding:25px 0;
+	height: 50px;
+}
+#footer a						{padding:5px; font:normal 11px verdana; color:#3b3b3b;}
+
+
+#bot {
+	padding: 10px 0px 0px 0px;
+	width:560px;
+	height: 200px;
+	overflow: visible;
+	clear:both;
+}
+
+.NA
+{
+  color:Red;
+  /*font-weight:bold;*/
+  font-size:11px;
+}
+.Aval
+{
+ color:#000099;
+ /*font-weight:bold;*/
+ font-size:11px;	
+}
+
+.Aval2
+{
+ color:#000099;
+ /*font-weight:bold;*/
+ font-size:9px;	
+}
+
+/*Data Grid Header align*/
+
+.Dghead
+{
+	/*background-color: #f0f5fa;*/
+	border-right: 1px solid #000000;
+	/*border-bottom: 1px solid #fff;*/
+	font-size: 12px;
+   font-weight:bold;
+
+}
+
+.Dgheadlastcolumn
+{
+	font-size: 12px;
+   font-weight:bold;
+}
+.padgridcell
+{
+  padding:0 5px 0 5px;	
+}
+.rightbdr
+{
+  border-right: 1px solid #000000;
+  font-size: 12px;
+}
+.leftbdr
+{
+  border-left: 1px solid #000000;
+  font-size: 12px;
+}
+
+.leftbdrblack
+{
+  border-left : 1px solid black ;
+}
+.TdTitle2
+{
+	background-color:#6CB5B5;
+	color:#FFFFFF;
+	font-weight: bold;
+	padding:3 0 10px 0; font-size:16px; 
+}
+.divborder
+{
+	border-top : 1px solid black ;
+	border-left : 1px solid black ;
+	border-bottom: 1px solid black ;
+	border-right: 1px solid black ;	
+}
+
+/* css for health centre reports*/
+
+.dgrowstyle
+{
+   background-color : #e7eff7;
+	
+	font-size: 12px;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+.dgalternatingrowstyle
+{
+  background-color : #f0f5fa;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	font-size: 12px;
+	
+}
+.padcellforsno
+{
+ padding:0 12px 0 0;	
+ 
+}
+.padcellfornum
+{
+ padding:0 28px 0 0;	
+}
+.padgridcelldistt
+{
+  padding:0 5px 0 5px;	
+}
+.tdpadtopbottom
+{
+  padding-top:1px;
+  padding-bottom:1px;	
+ 
+}
+
+.headerpadding
+{
+  padding-top:3px;
+  padding-bottom:3px;	
+  padding-left:12px;
+ 
+}
+.cellpadding
+{
+  padding-top:2px;
+  padding-bottom:2px;	
+  padding-left:12px;
+ 
+}
+.lnkbtncolor{color:Navy;}
+
+.padcellforsno2
+{
+ padding:0 6px 0 0;	
+}
+.cellpadding2
+{
+  padding-top:2px;
+  padding-bottom:2px;	
+  padding-left:6px;
+ 
+}
+.BotTopBrd
+{
+	border-top : 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+.bottombdr
+{
+	border-bottom: 1px solid #000000;
+		
+}
+.paddall
+{
+  padding-top:5px;
+  padding-bottom:5px;	
+  padding-left:5px;
+  padding-right:5px;
+   
+ 
+}
+
+.tdcelllayout
+{
+	background-color: #f0f5fa;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	font-size: 12px;
+}
+
+.tdbrd_RB
+{
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	font-size: 12px;
+	}
+	
+	.bluetxtcolor
+	{
+	   color:#000099;
+	}
+	.whitetxtcolor
+	{
+		color:#FFFFFF;
+		}
+/*----------------------------css for health centre reports--------------------*/
+
+/*Modal Popup*/
+.modalBackground {
+	background-color:Gray;
+	filter:alpha(opacity=70);
+	opacity:0.7;
+}
+
+.modalPopup {
+	background-color:#BFEBFF;
+	border-width:3px;
+	border-style:solid;
+	border-color:Gray;
+	padding:3px;
+	width:250px;
+}
+
+/*------------------------CSS for SMS-EMAIL ALERT----------------*/
+#container
+{
+  	 
+
+  	 background-color:White;
+     height:auto;
+  	margin: auto;  width: 850px;
+  	border-top : 2px solid black ;
+	border-left : 2px solid black ;
+	border-bottom: 2px solid black ;
+	border-right: 2px solid black ;
+	
+}
+
+/*-----------------CSS for progress bar-----------------*/
+.progress
+{
+		z-index:9999;
+        width:100%;
+        height:100%;
+        left:0;
+        top:0;
+		position:fixed;
+		background-color:Black;
+		filter:alpha(opacity=50);
+		opacity:0.7;
+}
+
+.progressInner 
+{
+	z-index:99999;
+	position:fixed;
+	color:#0077dd;
+	left:50%;
+    top:50%;
+	background-color:White;
+	border:3px solid #D6D6C2;
+	padding:3px;
+	width:250px;
+}

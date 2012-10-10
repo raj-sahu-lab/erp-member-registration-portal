@@ -1,0 +1,95 @@
+﻿
+
+/* Modal Popup CSS*/
+.mpBg
+{
+	background-color: gray;
+	filter: alpha(opacity=20);
+	opacity: 0.3;
+}
+.mp
+{
+	background-color: Transparent;
+	border-width: 0px;
+	border-style: solid;
+	border-color: #017ab6;
+	padding: 5px;
+}
+.mpHd
+{
+	background-color: #666;
+	border-color: #017ab6;
+	border-width: 1px;
+	color: #fff; text-align:left;
+	font-weight: bold;
+	width: 100%;padding:5px 0 5px 5px;
+	 border-radius: 3px;
+    -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	  margin-left:-5px;
+	
+}
+.mpClose
+{
+	text-align: center; 
+	width: 100%; padding-bottom:5px;
+}
+.mpCloseButton
+{
+	position: absolute;
+	right: 4px;
+	width: 17px;
+	height: 18px;
+}
+
+/***************/
+.modal-inner-wrapper
+{
+width:440px;
+height:auto;
+background-color:Gray; z-index:10000;
+}
+.modal-inner-wrapper .content
+{
+width:420px;
+background-color:#FFFFFF; border: solid 2px Gray; z-index:9999;
+float:right;  padding:5px 5px 5px 15px;
+}
+.modal-inner-wrapper .content .close
+{
+    float: right; cursor:pointer; margin-top:-25px; margin-right:-25px; 
+    
+}
+.modal-inner-wrapper .content .body
+{
+ color:#000; text-align:center;font-family: verdana;
+	font-size: 11px;
+}
+.rounded-corners
+{
+/*FOR OTHER MAJOR BROWSERS*/
+-moz-border-radius: 7px;
+-webkit-border-radius: 7px;
+-khtml-border-radius: 7px;
+border-radius: 7px;
+/*FOR IE*/
+behavior: url('border-radius.htc');
+}
+.rel {
+position: relative;
+z-index: inherit;
+zoom: 1; /* For IE6 */
+}
+.modal-bg{
+background-color:Gray;
+filter:alpha(opacity=50);
+opacity:0.6;
+z-index:999;
+}
+.modal{
+ position:absolute;
+}
+
+/*************/

@@ -1,0 +1,244 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="UserMasterPage.master.cs" Inherits="User_UserMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type = "text/javascript" >
+function disableBackButton()
+{
+window.history.forward();
+}
+setTimeout("disableBackButton()", 0);
+</script>
+ <head id="Head1"><meta http-equiv="X-Frame-Options" content="deny" />
+<link href="https://chatserver.comm100.com/css/comm100_livechatbutton.css" rel="stylesheet" type="text/css" />
+<link rel="../Slide/css/stylesheet" type="text/css" href="http://cdn.webrupee.com/font" />
+<link href="../Slide/Flash/js-image-slider.css" rel="stylesheet" type="text/css" />
+<script src="../Slide/Flash/js-image-slider.js" type="text/javascript"></script>
+<link href="../css/Style.css" rel="stylesheet" type="text/css" />
+ <link href="../css/msgpop.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" language="JavaScript" src="script/calendar_eu.js"></script>
+	<link rel="stylesheet" href="script/calendar.css"/>
+	 <script src="../menu/js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../menu/js/ScrollableGrid.js" type="text/javascript"></script>
+ <link href="../menu/css/StyleSheet.css" rel="Stylesheet" type="text/css" />
+        <style type="text/css">
+            .style1
+            {
+                width:826px;
+            }
+            #mcts1
+            {
+                width: 35px;
+            }
+        </style>
+   
+    <style type="text/css">
+        .circle
+        {
+            color: #FFF;
+            text-align: center;
+            float: left;
+            width: 40px;
+            height: 30px;
+            background-color: #00A8F9;
+            border: 1px solid #DDD;
+            padding: 0px 5px 10px 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            font-family: Cambria;
+            font-size: 30px;
+        }
+        .styletable
+        {
+            color: #00A8F9;
+            font-family: Cambria;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+<meta http-equiv="X-Frame-Options" content="deny" />
+<style> html{display:none;} </style>
+<script>
+    if (self == top) {
+        document.documentElement.style.display = 'block';
+    }
+</script>
+<title>
+USER PANEL
+</title>
+  <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onload="timeimgs('2')"; oncontextmenu="return false"; >
+   <form id="form1" runat="server">
+   <asp:ScriptManager ID="ScriptManager1" runat="server" />
+<%--<script type="text/javascript">
+    //<![CDATA[
+    var theForm = document.forms['form1'];
+    if (!theForm) {
+        theForm = document.form1;
+    }
+    function __doPostBack(eventTarget, eventArgument) {
+        if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+            theForm.__EVENTTARGET.value = eventTarget;
+            theForm.__EVENTARGUMENT.value = eventArgument;
+            theForm.submit();
+        }
+    }
+    //]]>
+</script>--%>
+    <script type="text/javascript">
+        //<![CDATA[
+        Sys.WebForms.PageRequestManager._initialize('ScriptManager1', document.getElementById('form1'));
+        Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tUpdatePanel1', 'tMsgPopup1$udpMsj'], [], [], 90);
+        //]]>
+</script>
+<link href="../css/Style.css" rel="stylesheet" type="text/css" />
+<div>
+    <table cellpadding="0" cellspacing="0" align="center" class="header" style="font-size: 0.80em; color:#999;">
+        <tr>
+            <td valign="top">
+                <a href="">
+                    <img src="../images/sun logo.jpg" style="padding:2px 2px 2px 0px;" alt=""  title="" width="140px" border="0" /></a>
+            </td>
+            <td valign="top" align="right" valign="bottom" >
+              <div  style="padding:5px 0px 5px 0px; width:840px;">
+              <asp:Image ID="Image2" runat="server" ImageUrl="../images/fb.png" Width="30px" />
+              <asp:Image ID="Image3" runat="server" ImageUrl="../images/twitter.jpg" Width="30px" />
+              <asp:Image ID="Image4" runat="server" ImageUrl="../images/googleplus.png" Width="30px" />
+              <asp:Image ID="Image5" runat="server" ImageUrl="../images/linkedin.png" Width="30px" />
+              <asp:Image ID="Image6" runat="server" ImageUrl="../images/youtube.png" Width="30px" />
+     </div>
+          <div style="  font-size:14px; color:Black; height:60px;">         <table class="style1" bgcolor="#FFFFFF">
+                <tr>
+                    <td width="10%" align="left">
+                        <asp:Label ID="lb_Welcome" runat="server" Font-Bold="True" ForeColor="#000000" 
+                            Width="120px"></asp:Label>
+                    </td>
+                    <td width="10%" align="left">
+                        <asp:Label ID="lb_UserID" runat="server" Font-Bold="True" ForeColor="#000000"></asp:Label>
+                    </td>
+                    <td width="70%" align="left">  
+                         <asp:Label ID="lb_uname" runat="server" Font-Bold="True" ForeColor="#000000"></asp:Label>            
+                    </td>
+                    <td width="10%" align="right">
+                        <asp:LinkButton ID="lnk_Logout" runat="server" ForeColor="#000000" 
+                            onclick="lnk_Logout_Click"></asp:LinkButton>
+                    </td>
+                </tr>
+                <tr>
+                <td width="10%" align="center" colspan="4">
+                  <marquee style="color: #000000; font-weight: 700" scrollamount="5" behavior="alternate">
+                SUNRISE ADVERTISING & PUBLIC RELATION                 
+                    </marquee>      
+                </td>
+                    
+                </tr>
+            </table>
+          </div>
+                      <div style=" padding: 3px 0px; vertical-align:top; color:#f4af3b; border:solid 0px #999;background:Black; width:890px;  height:25px;   box-shadow:1px 1px 1px 3px silver;  margin-bottom:5px; border-radius:4px; font-size:16px; ">
+     <div class="top_menu"  style=" background-color:Black; border-radius:4px; ">
+         <div id="navbar">
+       <script language="javascript" type="text/javascript" src="../menu/js/dropdown.js"></script>
+ <ul id="nav" style="width:98%; top: 0px; left: 0px;  color:#f4af3b;">
+ <li ><a href="UserHome.aspx">Home &nbsp;|</a></li>  
+            <li><a href="UserRecord.aspx">PROFILE UPDATE &nbsp;|</a></li>  
+            <li><a href="ChangePassword.aspx">CHANGE PASSWORD &nbsp;|</a></li>  
+            <li><a href="User_UploadData.aspx">UPLOAD DATA &nbsp;|</a></li>                					
+            <li><a href="UserTreeView.aspx">TREE VIEW &nbsp;|</a>
+            <ul>
+                  <li><a href="UserTreeView.aspx">BINARY TREE</a></li>
+                  <li><a href="User_LevelTree.aspx">LEVEL TREE</a></li>                                             
+            </ul>  
+            </li>
+            <li><a href="#">DOWNLINE DETAILS &nbsp;|</a>
+            <ul>
+                  <li><a href="User_UplinerDetails.aspx">DOWNLINE LIST</a></li> 
+                  <li><a href="User_DownlinePoint.aspx">DOWNLINE POINT</a></li>                                
+            </ul> 
+            </li>
+              <li><a href="#">REPORTS &nbsp;|</a>
+                 <ul>
+                 <li><a href="User_Payout.aspx">PAYOUT</a> </li>  
+                 <li><a href="User_Ewallet.aspx">EWALLET</a> </li>  
+                 <li><a href="User_PurchaseDetails.aspx">PURCHASE DETAILS</a> </li>                                                           
+                 <li><a href="User_ICard.aspx">I-Card Print</a> </li>  
+                </ul>
+            </li>
+        </ul>	
+    </div>
+        </div>
+    </div></td> </tr>
+         <tr valign="top" ><td colspan="2"><hr /></td></tr> 
+    </table>
+</div>
+
+
+<div style="width:1030px; margin-left:160px;  box-shadow: 1px 2px 1px 3px silver; ">
+ <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">        
+ 
+ </asp:ContentPlaceHolder> 
+
+</div>
+    
+   
+<div style="box-shadow:1px 1px 1px 3px silver; height:40px;  margin-bottom:-60px; background-color:Black;">
+      <div style="color:color:#999;padding-top:5px;  text-align:center;"><a>COPYRIGHT © 
+          2013. ALL RIGHTS RESERVED. | DESIGNED &amp; DEVELOPED BY : BIT it TECHNOLOGY PVT. 
+          LTD.</a></div>
+            <script type="text/javascript">
+
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-39120498-1']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+
+</script>
+    </div>
+    <span id="MsgPopup1_udpMsj">
+        <input type="submit" name="MsgPopup1$btnD" value="" id="MsgPopup1_btnD" style="height:0px;width:0px;display: none" />
+        <input type="submit" name="MsgPopup1$btnD2" value="" id="MsgPopup1_btnD2" style="height:0px;width:0px;display: none" />
+        <div id="MsgPopup1_pnlMsg" class="mp" style="display:none;">
+            <div class="rel">
+                <div class="modal-inner-wrapper rounded-corners">
+                    <div class="content rounded-corners">
+                        <div class="close"> 
+                        <img src="images/d.png" id="MsgPopup1_btnClose" /> <a id="MsgPopup1_LinkButton1" href="javascript:__doPostBack('MsgPopup1$LinkButton1','')"></a> </img>
+                        </div>
+                        <div class="body">
+                            <div id="MsgPopup1_pnlMsgHD" class="mpHd">
+                                &nbsp;Message
+	</div>
+                            <div>
+	</div>
+                            <div class="mpClose">
+                                <input type="submit" name="MsgPopup1$btnOK" value="OK" id="MsgPopup1_btnOK" style="width:60px;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+    </span>
+
+<script type="text/javascript">
+    //<![CDATA[
+    Sys.Application.initialize();
+    Sys.Application.add_init(function() {
+        $create(Sys.UI._Timer, { "enabled": true, "interval": 1000, "uniqueID": "Timer1" }, null, null, $get("Timer1"));
+    });
+    Sys.Application.add_init(function() {
+        $create(AjaxControlToolkit.ModalPopupBehavior, { "BackgroundCssClass": "mpBg", "CancelControlID": "MsgPopup1_btnClose", "OkControlID": "MsgPopup1_btnOK", "PopupControlID": "MsgPopup1_pnlMsg", "PopupDragHandleControlID": "MsgPopup1_pnlMsgHD", "dynamicServicePath": "/index.aspx", "id": "MsgPopup1_mpeMsg" }, null, null, $get("MsgPopup1_btnD"));
+    });
+    //]]>
+</script>
+</form> 
+</body>
+</html>
