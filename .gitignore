@@ -24,3 +24,6 @@ Thumbs.db
 # Archives
 *.rar
 *.zip
+node_modules/
+.env
+*.env.local
