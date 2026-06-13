@@ -27,3 +27,14 @@ Thumbs.db
 node_modules/
 .env
 *.env.local
+
+# Member photo upload directories (must not be committed)
+Uploads/
+Img_Member/
+Memo_Photo/
+
+# OS files (all subdirectories)
+**/.DS_Store
+
+# Build output
+Bin/

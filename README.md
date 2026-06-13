@@ -2,6 +2,8 @@
 
 A comprehensive web-based member registration and management system built for organizations to track members across geographic hierarchies with detailed profiling, reporting, and admin capabilities.
 
+> **Note:** This is a 2014–2015 portfolio codebase. Authentication uses direct SQL queries (pre-parameterization era) and passwords are stored without modern hashing — these would be the first things hardened before any production deployment today.
+
 ## Built: 2012
 
 ## Tech Stack
