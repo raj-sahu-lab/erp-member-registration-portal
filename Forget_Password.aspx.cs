@@ -36,7 +36,9 @@ public partial class Forget_Password : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();        
-            cmd.CommandText = "Select Password from Login where Login_ID='" + TextBox3.Text + "'";
+            cmd.CommandText = "Select Password from Login where Login_ID=@loginId";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@loginId", TextBox3.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             if (dr.Read())
@@ -63,7 +65,9 @@ public partial class Forget_Password : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Select Email from MLMRegistration where Upliner_ID='" + TextBox3.Text + "'";
+            cmd.CommandText = "Select Email from MLMRegistration where Upliner_ID=@uplId";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@uplId", TextBox3.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             if (dr.Read())

@@ -153,8 +153,8 @@ Meeting_Reason, Meeting_Place, Meeting_Date, Assign_Work, Inviting_Purpose,
  Memo_Discription,rastra4 ,kshetraorg4,kshetrarss4,prantrss4,prantorg4,prantgovt4,loksabha4,district4,vidhansabha4,
 tehsil4,nagar4,upnagar4,pincode4,Sr_No, Organization, RSSDesignation,From_Date, To_Date,Achievement_During_Work,
 Additional_Remark,present_past,sanghsiksha,level,vicharpariwar,familymembername,rss_member_id From RSS_Registration
-Where Reg_ID='" + ddl_regid.Text + "' Order By Reg_ID";
-        DataTable dtcourse = ExecuteDataTable(classDB.qryStr, CommandType.Text, qry);
+Where Reg_ID=@regId Order By Reg_ID";
+        DataTable dtcourse = ExecuteDataTable(classDB.qryStr, CommandType.Text, qry, new SqlParameter("@regId", ddl_regid.Text));
         if (dtcourse.Rows.Count > 0)
         {
             GV_personal_details.DataSource = dtcourse;
@@ -186,9 +186,9 @@ Meeting_Reason, Meeting_Place, Meeting_Date, Assign_Work, Inviting_Purpose,
  Memo_Discription,rastra4 ,kshetraorg4,kshetrarss4,prantrss4,prantorg4,prantgovt4,loksabha4,district4,vidhansabha4,
 tehsil4,nagar4,upnagar4,pincode4,Sr_No, Organization, RSSDesignation,From_Date, To_Date,Achievement_During_Work,
 Additional_Remark,present_past,sanghsiksha,level,vicharpariwar,familymembername,rss_member_id From RSS_Registration
-Where Name='" + ddl_name.Text + "' Order By Reg_ID";
-        
-        DataTable dtcourse = ExecuteDataTable(classDB.qryStr, CommandType.Text, qry);
+Where Name=@name Order By Reg_ID";
+
+        DataTable dtcourse = ExecuteDataTable(classDB.qryStr, CommandType.Text, qry, new SqlParameter("@name", ddl_name.Text));
         if (dtcourse.Rows.Count > 0)
         {
             GV_personal_details.DataSource = dtcourse;

@@ -84,7 +84,10 @@ public partial class Admin_LevelMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into RSSLevelMaster(Sr_No, Level_Name) values('" + txtcomm_id.Text + "','" + txtlabel_name.Text + "')";
+            cmd.CommandText = "Insert into RSSLevelMaster(Sr_No, Level_Name) values(@srNo,@levelName)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@srNo", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@levelName", txtlabel_name.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";

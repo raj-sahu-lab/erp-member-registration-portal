@@ -31,7 +31,9 @@ public partial class User_UserMasterPage : System.Web.UI.MasterPage
             lnk_Logout.Text = "Logout";
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Select Name from MLMRegistration where Upliner_ID='" + lb_UserID.Text + "'";
+            cmd.CommandText = "Select Name from MLMRegistration where Upliner_ID=@uid";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@uid", lb_UserID.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             if (dr.Read())
@@ -82,7 +84,9 @@ public partial class User_UserMasterPage : System.Web.UI.MasterPage
             {
                 con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
                 con.Open();
-                cmd.CommandText = "select lleg, rleg, ljoining, rjoining, pair from User_Detail Where userid='" + ar_ls[start_i] + "'";
+                cmd.CommandText = "select lleg, rleg, ljoining, rjoining, pair from User_Detail Where userid=@userId";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@userId", ar_ls[start_i].ToString());
                 cmd.Connection = con;
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
@@ -94,7 +98,14 @@ public partial class User_UserMasterPage : System.Web.UI.MasterPage
                     pair1 = Convert.ToInt32(dr[4]);
                 }
                 dr.Close();
-                cmd.CommandText = "Update Binary_Detail SET lleg='" + lleg_id + "',rleg='" + rleg_id + "',ljoining='" + ljoining1 + "',rjoining='" + rjoining1 + "',pair='" + pair1 + "' Where userid='" + ar_ls[start_i] + "'";
+                cmd.CommandText = "Update Binary_Detail SET lleg=@lleg,rleg=@rleg,ljoining=@ljoining,rjoining=@rjoining,pair=@pair Where userid=@userId2";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@lleg", lleg_id);
+                cmd.Parameters.AddWithValue("@rleg", rleg_id);
+                cmd.Parameters.AddWithValue("@ljoining", ljoining1);
+                cmd.Parameters.AddWithValue("@rjoining", rjoining1);
+                cmd.Parameters.AddWithValue("@pair", pair1);
+                cmd.Parameters.AddWithValue("@userId2", ar_ls[start_i].ToString());
                 cmd.Connection = con;
                 cmd.ExecuteNonQuery();
                 con.Close();

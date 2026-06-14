@@ -51,7 +51,9 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
             {
                 con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
                 con.Open();
-                cmd.CommandText = "select orgwisekshetra from StateMaster where Country='" + ddl_country.Text + "'";
+                cmd.CommandText = @"select orgwisekshetra from StateMaster where Country='@country'";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@country", ddl_country.Text);
                 cmd.Connection = con;
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -75,7 +77,9 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select orgwisekshetra from StateMaster where Country='" + ddl_country.Text + "'";
+            cmd.CommandText = @"select orgwisekshetra from StateMaster where Country='@country'";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -225,7 +229,21 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into UpNagarMaster(Sr_No, Country, kshetraorg,kshetrarss,prantrss,prantorg,prantgovt ,Loksabha, vidhansabha, District, Tehsil, Nagar,upnagar) values('" + txtcomm_id.Text + "','" + ddl_country.Text + "','" + ddl_kshetraorg.SelectedItem.Text + "','" + ddl_kshetrarss.SelectedItem.Text + "','" + ddl_prant_rss.SelectedItem.Text + "','" + ddl_prant_org.SelectedItem.Text + "','" + ddl_prant_govt.SelectedItem.Text + "','" + ddl_lokshabhaname.SelectedItem.Text + "','" + ddl_vidhansabha.SelectedItem.Text + "','" + ddl_distr.SelectedItem.Text + "','" + ddl_tehsil.SelectedItem.Text + "','" + txtlabel_name.SelectedItem.Text + "','" + txtupnagar.Text + "')";
+            cmd.CommandText = @"Insert into UpNagarMaster(Sr_No, Country, kshetraorg,kshetrarss,prantrss,prantorg,prantgovt ,Loksabha, vidhansabha, District, Tehsil, Nagar,upnagar) values('@commid','@country','@kshetraorg','@kshetrarss','@prantrss','@prantorg','@prantgovt','@lokshabhaname','@vidhansabha','@distr','@tehsil','@labelname','@upnagar')";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@commid", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
+            cmd.Parameters.AddWithValue("@kshetraorg", ddl_kshetraorg.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetrarss", ddl_kshetrarss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantrss", ddl_prant_rss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantorg", ddl_prant_org.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantgovt", ddl_prant_govt.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@lokshabhaname", ddl_lokshabhaname.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@vidhansabha", ddl_vidhansabha.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@distr", ddl_distr.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@tehsil", ddl_tehsil.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@labelname", txtlabel_name.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@upnagar", txtupnagar.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";
@@ -260,7 +278,10 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select rsswisekshetra from StateMaster where Country='" + ddl_country.SelectedItem.Text + "' and orgwisekshetra='" + ddl_kshetraorg.SelectedItem.Text + "'";
+            cmd.CommandText = @"select rsswisekshetra from StateMaster where Country='@country' and orgwisekshetra='@kshetraorg'";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetraorg", ddl_kshetraorg.SelectedItem.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -283,7 +304,11 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select rsswiseprant from StateMaster where Country='" + ddl_country.SelectedItem.Text + "' and orgwisekshetra='" + ddl_kshetraorg.SelectedItem.Text + "' and rsswisekshetra='" + ddl_kshetrarss.SelectedItem.Text + "'";
+            cmd.CommandText = @"select rsswiseprant from StateMaster where Country='@country' and orgwisekshetra='@kshetraorg' and rsswisekshetra='@kshetrarss'";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetraorg", ddl_kshetraorg.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetrarss", ddl_kshetrarss.SelectedItem.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -306,7 +331,12 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select govtwiseprant from StateMaster where Country='" + ddl_country.SelectedItem.Text + "' and orgwisekshetra='" + ddl_kshetraorg.SelectedItem.Text + "' and rsswisekshetra='" + ddl_kshetrarss.SelectedItem.Text + "' and rsswiseprant='" + ddl_prant_rss.SelectedItem.Text + "'";
+            cmd.CommandText = @"select govtwiseprant from StateMaster where Country='@country' and orgwisekshetra='@kshetraorg' and rsswisekshetra='@kshetrarss' and rsswiseprant='@prantrss'";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetraorg", ddl_kshetraorg.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetrarss", ddl_kshetrarss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantrss", ddl_prant_rss.SelectedItem.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -329,7 +359,11 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select orgwiseprant from StateMaster where Country='" + ddl_country.SelectedItem.Text + "' and orgwisekshetra='" + ddl_kshetraorg.SelectedItem.Text + "' and rsswisekshetra='" + ddl_kshetrarss.SelectedItem.Text + "'";
+            cmd.CommandText = @"select orgwiseprant from StateMaster where Country='@country' and orgwisekshetra='@kshetraorg' and rsswisekshetra='@kshetrarss'";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetraorg", ddl_kshetraorg.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetrarss", ddl_kshetrarss.SelectedItem.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -354,7 +388,14 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
             con.Open();
 
             // 
-            cmd.CommandText = "select Loksabha from LoksabhaMaster where Country='" + ddl_country.SelectedItem.Text + "' and kshetraorg='" + ddl_kshetraorg.SelectedItem.Text + "' and kshetrarss='" + ddl_kshetrarss.SelectedItem.Text + "' and prantrss='" + ddl_prant_rss.SelectedItem.Text + "' and prantorg='" + ddl_prant_org.SelectedItem.Text + "' and prantgovt='" + ddl_prant_govt.SelectedItem.Text + "'";
+            cmd.CommandText = @"select Loksabha from LoksabhaMaster where Country='@country' and kshetraorg='@kshetraorg' and kshetrarss='@kshetrarss' and prantrss='@prantrss' and prantorg='@prantorg' and prantgovt='@prantgovt'";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetraorg", ddl_kshetraorg.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetrarss", ddl_kshetrarss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantrss", ddl_prant_rss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantorg", ddl_prant_org.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantgovt", ddl_prant_govt.SelectedItem.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -377,7 +418,15 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select District from DistrictMaster where Country='" + ddl_country.SelectedItem.Text + "' and kshetraorg='" + ddl_kshetraorg.SelectedItem.Text + "' and kshetrarss='" + ddl_kshetrarss.SelectedItem.Text + "' and prantrss='" + ddl_prant_rss.SelectedItem.Text + "' and prantorg='" + ddl_prant_org.SelectedItem.Text + "' and prantgovt='" + ddl_prant_govt.SelectedItem.Text + "' and loksabha='" + ddl_lokshabhaname.SelectedItem.Text + "' ";
+            cmd.CommandText = @"select District from DistrictMaster where Country='@country' and kshetraorg='@kshetraorg' and kshetrarss='@kshetrarss' and prantrss='@prantrss' and prantorg='@prantorg' and prantgovt='@prantgovt' and loksabha='@lokshabhaname' ";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetraorg", ddl_kshetraorg.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetrarss", ddl_kshetrarss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantrss", ddl_prant_rss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantorg", ddl_prant_org.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantgovt", ddl_prant_govt.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@lokshabhaname", ddl_lokshabhaname.SelectedItem.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -400,7 +449,16 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select Vidhansabha from CityMaster where Country='" + ddl_country.SelectedItem.Text + "' and kshetraorg='" + ddl_kshetraorg.SelectedItem.Text + "' and kshetrarss='" + ddl_kshetrarss.SelectedItem.Text + "' and prantrss='" + ddl_prant_rss.SelectedItem.Text + "' and prantorg='" + ddl_prant_org.SelectedItem.Text + "' and prantgovt='" + ddl_prant_govt.SelectedItem.Text + "' and loksabha='" + ddl_lokshabhaname.SelectedItem.Text + "' and District='" + ddl_distr.SelectedItem.Text + "' ";
+            cmd.CommandText = @"select Vidhansabha from CityMaster where Country='@country' and kshetraorg='@kshetraorg' and kshetrarss='@kshetrarss' and prantrss='@prantrss' and prantorg='@prantorg' and prantgovt='@prantgovt' and loksabha='@lokshabhaname' and District='@distr' ";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetraorg", ddl_kshetraorg.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetrarss", ddl_kshetrarss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantrss", ddl_prant_rss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantorg", ddl_prant_org.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantgovt", ddl_prant_govt.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@lokshabhaname", ddl_lokshabhaname.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@distr", ddl_distr.SelectedItem.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -423,7 +481,17 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select Tehsil from TehsilMaster where Country='" + ddl_country.SelectedItem.Text + "' and kshetraorg='" + ddl_kshetraorg.SelectedItem.Text + "' and kshetrarss='" + ddl_kshetrarss.SelectedItem.Text + "' and prantrss='" + ddl_prant_rss.SelectedItem.Text + "' and prantorg='" + ddl_prant_org.SelectedItem.Text + "' and prantgovt='" + ddl_prant_govt.SelectedItem.Text + "' and loksabha='" + ddl_lokshabhaname.SelectedItem.Text + "' and District='" + ddl_distr.SelectedItem.Text + "' and vidhansabha='" + ddl_vidhansabha.SelectedItem.Text + "' ";
+            cmd.CommandText = @"select Tehsil from TehsilMaster where Country='@country' and kshetraorg='@kshetraorg' and kshetrarss='@kshetrarss' and prantrss='@prantrss' and prantorg='@prantorg' and prantgovt='@prantgovt' and loksabha='@lokshabhaname' and District='@distr' and vidhansabha='@vidhansabha' ";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetraorg", ddl_kshetraorg.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetrarss", ddl_kshetrarss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantrss", ddl_prant_rss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantorg", ddl_prant_org.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantgovt", ddl_prant_govt.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@lokshabhaname", ddl_lokshabhaname.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@distr", ddl_distr.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@vidhansabha", ddl_vidhansabha.SelectedItem.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -446,7 +514,18 @@ public partial class Admin_upnagarmaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select Nagar from NagarMaster where Country='" + ddl_country.SelectedItem.Text + "' and kshetraorg='" + ddl_kshetraorg.SelectedItem.Text + "' and kshetrarss='" + ddl_kshetrarss.SelectedItem.Text + "' and prantrss='" + ddl_prant_rss.SelectedItem.Text + "' and prantorg='" + ddl_prant_org.SelectedItem.Text + "' and prantgovt='" + ddl_prant_govt.SelectedItem.Text + "' and loksabha='" + ddl_lokshabhaname.SelectedItem.Text + "' and District='" + ddl_distr.SelectedItem.Text + "' and vidhansabha='" + ddl_vidhansabha.SelectedItem.Text + "' and tehsil='" + ddl_tehsil.SelectedItem.Text + "' ";
+            cmd.CommandText = @"select Nagar from NagarMaster where Country='@country' and kshetraorg='@kshetraorg' and kshetrarss='@kshetrarss' and prantrss='@prantrss' and prantorg='@prantorg' and prantgovt='@prantgovt' and loksabha='@lokshabhaname' and District='@distr' and vidhansabha='@vidhansabha' and tehsil='@tehsil' ";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetraorg", ddl_kshetraorg.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@kshetrarss", ddl_kshetrarss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantrss", ddl_prant_rss.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantorg", ddl_prant_org.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prantgovt", ddl_prant_govt.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@lokshabhaname", ddl_lokshabhaname.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@distr", ddl_distr.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@vidhansabha", ddl_vidhansabha.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@tehsil", ddl_tehsil.SelectedItem.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())

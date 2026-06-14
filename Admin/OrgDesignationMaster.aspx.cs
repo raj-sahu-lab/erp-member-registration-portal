@@ -111,7 +111,11 @@ public partial class Admin_RSSDesignationMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into RSSDesignationMaster(Sr_No, Designation_Name,level_name) values('" + txtcomm_id.Text + "','" + txtlabel_name.Text + "','"+ddl_level.SelectedItem.Text+"')";
+            cmd.CommandText = "Insert into RSSDesignationMaster(Sr_No, Designation_Name,level_name) values(@srNo,@desigName,@levelName)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@srNo", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@desigName", txtlabel_name.Text);
+            cmd.Parameters.AddWithValue("@levelName", ddl_level.SelectedItem.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";

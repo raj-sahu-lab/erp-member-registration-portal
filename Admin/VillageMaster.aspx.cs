@@ -33,7 +33,9 @@ public partial class Admin_VillageMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Select Distinct State_Name from StateMaster Where Country='" + ddl_country.Text + "' Order By State_Name";
+            cmd.CommandText = @"Select Distinct State_Name from StateMaster Where Country='@country' Order By State_Name";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -139,7 +141,14 @@ public partial class Admin_VillageMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into VillageMaster(Sr_No, Country, State_Name, District, Vidhansabha, Village) values('" + txtcomm_id.Text + "','" + ddl_country.Text + "','" + ddl_state.Text + "','" + ddl_district.Text + "','" + ddl_Vidhansabha.Text + "','" + txtlabel_name.Text + "')";
+            cmd.CommandText = @"Insert into VillageMaster(Sr_No, Country, State_Name, District, Vidhansabha, Village) values('@commid','@country','@state','@district','@Vidhansabha','@labelname')";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@commid", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
+            cmd.Parameters.AddWithValue("@state", ddl_state.Text);
+            cmd.Parameters.AddWithValue("@district", ddl_district.Text);
+            cmd.Parameters.AddWithValue("@Vidhansabha", ddl_Vidhansabha.Text);
+            cmd.Parameters.AddWithValue("@labelname", txtlabel_name.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";
@@ -173,7 +182,9 @@ public partial class Admin_VillageMaster : System.Web.UI.Page
             ddl_district.Items.Add("-Select-");           
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select Distinct District from DistrictMaster Where State_Name='" + ddl_state.Text + "' Order By District";
+            cmd.CommandText = @"select Distinct District from DistrictMaster Where State_Name='@state' Order By District";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@state", ddl_state.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -197,7 +208,10 @@ public partial class Admin_VillageMaster : System.Web.UI.Page
             ddl_Vidhansabha.Items.Add("-Select-");
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select Distinct Vidhansabha from CityMaster Where State_Name='" + ddl_state.Text + "' AND District='" + ddl_district.Text + "' Order By Vidhansabha";
+            cmd.CommandText = @"select Distinct Vidhansabha from CityMaster Where State_Name='@state' AND District='@district' Order By Vidhansabha";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@state", ddl_state.Text);
+            cmd.Parameters.AddWithValue("@district", ddl_district.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())

@@ -84,7 +84,10 @@ public partial class Admin_CurricularActivityMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into CurricularActivityMaster(Sr_No, CurricularActivity_Name) values('" + txtcomm_id.Text + "','" + txtlabel_name.Text + "')";
+            cmd.CommandText = "Insert into CurricularActivityMaster(Sr_No, CurricularActivity_Name) values(@srNo,@actName)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@srNo", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@actName", txtlabel_name.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";

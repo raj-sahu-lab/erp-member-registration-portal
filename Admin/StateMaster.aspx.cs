@@ -146,7 +146,16 @@ public partial class Admin_StateMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "insert into StateMaster (Sr_No,Country,orgwisekshetra,rsswisekshetra,rsswiseprant,orgwiseprant,govtwiseprant,State_Code) values ('" + txtcomm_id.Text + "','" + ddl_country.Text + "','" + ddl_ORGzone.SelectedItem.Text + "','" + ddl_RSSzone.SelectedItem.Text + "','" + txtrss_prant_name.Text + "','" + txtorg_prant_name.Text + "','" + txtgovt_prant_name.Text + "','" + txtcode.Text + "')";
+            cmd.CommandText = "insert into StateMaster (Sr_No,Country,orgwisekshetra,rsswisekshetra,rsswiseprant,orgwiseprant,govtwiseprant,State_Code) values (@srNo,@country,@orgKsh,@rssKsh,@rssPrant,@orgPrant,@govtPrant,@stateCode)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@srNo", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
+            cmd.Parameters.AddWithValue("@orgKsh", ddl_ORGzone.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@rssKsh", ddl_RSSzone.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@rssPrant", txtrss_prant_name.Text);
+            cmd.Parameters.AddWithValue("@orgPrant", txtorg_prant_name.Text);
+            cmd.Parameters.AddWithValue("@govtPrant", txtgovt_prant_name.Text);
+            cmd.Parameters.AddWithValue("@stateCode", txtcode.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";
@@ -183,7 +192,9 @@ public partial class Admin_StateMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Select Distinct orgwise from KshetraMaster where Country='" + ddl_country.Text + "' Order By orgwise";
+            cmd.CommandText = "Select Distinct orgwise from KshetraMaster where Country=@country Order By orgwise";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -206,7 +217,10 @@ public partial class Admin_StateMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Select Distinct rsswise from KshetraMaster where Country='" + ddl_country.SelectedItem.Text + "' and orgwise='" + ddl_ORGzone.SelectedItem.Text + "' Order By rsswise";
+            cmd.CommandText = "Select Distinct rsswise from KshetraMaster where Country=@country and orgwise=@orgwise Order By rsswise";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@orgwise", ddl_ORGzone.SelectedItem.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())

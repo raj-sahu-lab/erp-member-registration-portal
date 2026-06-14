@@ -84,7 +84,10 @@ public partial class Admin_LabelMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into LabelMaster(Label_ID, Label_Name) values('" + txtcomm_id.Text + "','" + txtlabel_name.Text + "')";
+            cmd.CommandText = "Insert into LabelMaster(Label_ID, Label_Name) values(@labelId,@labelName)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@labelId", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@labelName", txtlabel_name.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";

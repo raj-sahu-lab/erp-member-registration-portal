@@ -84,7 +84,10 @@ public partial class Admin_HobbyMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into HobbyMaster(Sr_No, Hobby_Name) values('" + txtcomm_id.Text + "','" + txtlabel_name.Text + "')";
+            cmd.CommandText = "Insert into HobbyMaster(Sr_No, Hobby_Name) values(@srNo,@hobbyName)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@srNo", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@hobbyName", txtlabel_name.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";

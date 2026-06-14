@@ -37,10 +37,12 @@ public partial class Default : System.Web.UI.Page
             return;
         }
         string CL_MODE = "";
-       
+
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select Mode from LevelMaster Where ID='" + TextBox1.Text + "'";
+            cmd.CommandText = "select Mode from LevelMaster Where ID=@loginId";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@loginId", TextBox1.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             if (dr.Read())
@@ -48,14 +50,25 @@ public partial class Default : System.Web.UI.Page
                 CL_MODE = dr[0].ToString();
             }
             dr.Close();
-            cmd.CommandText = "Select Login_Type from Login where (Login_ID='" + TextBox1.Text + "' AND Password='" + TextBox2.Text + "')";
+            // Fetch stored password hash for verification
+            string storedPassword = null;
+            string loginType = null;
+            cmd.CommandText = "Select Login_Type, Password from Login where Login_ID=@loginId2";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@loginId2", TextBox1.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             if (dr.Read())
             {
+                loginType = dr[0].ToString();
+                storedPassword = dr[1].ToString();
+            }
+            dr.Close();
+            if (loginType != null && PasswordHelper.VerifyPassword(TextBox2.Text, storedPassword))
+            {
                 if (DropDownList1.Text != "User")
                 {
-                    if (dr[0].ToString() == "Admin")
+                    if (loginType == "Admin")
                     {
                         if (DropDownList1.Text != "Admin")
                         {
@@ -69,7 +82,7 @@ public partial class Default : System.Web.UI.Page
                         Session["Login_ID"] = TextBox1.Text;
                         Response.Redirect("Admin/AdminHome.aspx");
                     }
-                    if (dr[0].ToString() == "User")
+                    if (loginType == "User")
                     {
                         if (DropDownList1.Text != "User")
                         {
@@ -83,7 +96,7 @@ public partial class Default : System.Web.UI.Page
                         Session["Login_ID"] = TextBox1.Text;
                         Response.Redirect("User/UserHome.aspx");
                     }
-                    if (dr[0].ToString() == "Head")
+                    if (loginType == "Head")
                     {
                         if ((DropDownList1.Text == "STATE HEAD") || (DropDownList1.Text == "DISTRICT HEAD") || (DropDownList1.Text == "INDIA HEAD"))
                         {

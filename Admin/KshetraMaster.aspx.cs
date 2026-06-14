@@ -110,7 +110,12 @@ public partial class Admin_KshetraMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into KshetraMaster(Sr_No, Country, orgwise, rsswise) values('" + txtcomm_id.Text + "','" + ddl_country.Text + "','" + txtorgwise.Text + "','" + txtrsswise.Text + "')";
+            cmd.CommandText = "Insert into KshetraMaster(Sr_No, Country, orgwise, rsswise) values(@srNo,@country,@orgwise,@rsswise)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@srNo", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
+            cmd.Parameters.AddWithValue("@orgwise", txtorgwise.Text);
+            cmd.Parameters.AddWithValue("@rsswise", txtrsswise.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";

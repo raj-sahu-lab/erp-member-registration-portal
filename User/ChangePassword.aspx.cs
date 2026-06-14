@@ -35,7 +35,9 @@ public partial class User_ChangePassword : System.Web.UI.Page
             string u_id = Session["Login_ID"].ToString();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select * from MLMRegistration where Upliner_ID='" + u_id + "'";
+            cmd.CommandText = "select * from MLMRegistration where Upliner_ID=@uplId";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@uplId", u_id);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             if (dr.Read())
@@ -84,10 +86,21 @@ public partial class User_ChangePassword : System.Web.UI.Page
             cmd.Connection = con;
             cmd.Transaction = transaction;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Update MLMRegistration Set Password='" + txtpassword.Text + "',Hint_Question='" + ddlhint_que.Text + "',Answer='" + txtans.Text + "' Where Upliner_ID='" + txtuser_id.Text + "'";
+            string hashedPwd = PasswordHelper.HashPassword(txtpassword.Text);
+            cmd.CommandText = "Update MLMRegistration Set Password=@pwd,Hint_Question=@hint,Answer=@ans Where Upliner_ID=@uid";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@pwd", hashedPwd);
+            cmd.Parameters.AddWithValue("@hint", ddlhint_que.Text);
+            cmd.Parameters.AddWithValue("@ans", txtans.Text);
+            cmd.Parameters.AddWithValue("@uid", txtuser_id.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "Update Login Set Password='" + txtpassword.Text + "',Security_Hint='" + ddlhint_que.Text + "',Answer='" + txtans.Text + "' Where Login_ID='" + txtuser_id.Text + "'";
+            cmd.CommandText = "Update Login Set Password=@pwd2,Security_Hint=@hint2,Answer=@ans2 Where Login_ID=@uid2";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@pwd2", hashedPwd);
+            cmd.Parameters.AddWithValue("@hint2", ddlhint_que.Text);
+            cmd.Parameters.AddWithValue("@ans2", txtans.Text);
+            cmd.Parameters.AddWithValue("@uid2", txtuser_id.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv1 = "<script>alert('Password has been changed');</script>";

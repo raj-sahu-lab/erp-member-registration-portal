@@ -104,7 +104,14 @@ public partial class Admin_VibhagMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into VibhagMaster(Sr_No, Country, Zone, State, Kshetra, Vibhag_Name) values('" + txtcomm_id.Text + "','" + ddl_country.Text + "','" + ddl_zone.Text + "','" + ddl_prant.Text + "','" + ddl_prant.Text + "','" + txtlabel_name.Text + "')";
+            cmd.CommandText = @"Insert into VibhagMaster(Sr_No, Country, Zone, State, Kshetra, Vibhag_Name) values('@commid','@country','@zone','@prant','@prant','@labelname')";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@commid", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
+            cmd.Parameters.AddWithValue("@zone", ddl_zone.Text);
+            cmd.Parameters.AddWithValue("@prant", ddl_prant.Text);
+            cmd.Parameters.AddWithValue("@prant", ddl_prant.Text);
+            cmd.Parameters.AddWithValue("@labelname", txtlabel_name.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";
@@ -137,7 +144,9 @@ public partial class Admin_VibhagMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Select Distinct Zone_Name from ZoneMaster Where Country='" + ddl_country.Text + "' Order By Zone_Name";
+            cmd.CommandText = @"Select Distinct Zone_Name from ZoneMaster Where Country='@country' Order By Zone_Name";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -160,7 +169,10 @@ public partial class Admin_VibhagMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Select Distinct State_Name from StateMaster Where Country='" + ddl_country.Text + "' AND Zone='" + ddl_zone.Text + "' Order By State_Name";
+            cmd.CommandText = @"Select Distinct State_Name from StateMaster Where Country='@country' AND Zone='@zone' Order By State_Name";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
+            cmd.Parameters.AddWithValue("@zone", ddl_zone.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -183,7 +195,11 @@ public partial class Admin_VibhagMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Select Distinct Kshetra_Name from KshetraMaster Where Country='" + ddl_country.Text + "' AND Zone='" + ddl_zone.Text + "' AND State='" + ddl_prant.Text + "' Order By Kshetra_Name";
+            cmd.CommandText = @"Select Distinct Kshetra_Name from KshetraMaster Where Country='@country' AND Zone='@zone' AND State='@prant' Order By Kshetra_Name";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
+            cmd.Parameters.AddWithValue("@zone", ddl_zone.Text);
+            cmd.Parameters.AddWithValue("@prant", ddl_prant.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())

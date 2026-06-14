@@ -103,7 +103,11 @@ public partial class Admin_ZoneMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into ZoneMaster(Sr_No, Country, Zone_Name) values('" + txtcomm_id.Text + "','" + ddl_country.Text + "','" + txtlabel_name.Text + "')";
+            cmd.CommandText = "Insert into ZoneMaster(Sr_No, Country, Zone_Name) values(@srNo,@country,@zoneName)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@srNo", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@country", ddl_country.Text);
+            cmd.Parameters.AddWithValue("@zoneName", txtlabel_name.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";

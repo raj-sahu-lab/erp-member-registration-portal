@@ -94,7 +94,9 @@ public partial class Admin_Sub_SubSpeclMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Select Distinct Sub_Specialization from SubSpeclMaster Where Specialization_Name='" + ddl_country.Text + "' Order By Sub_Specialization";
+            cmd.CommandText = "Select Distinct Sub_Specialization from SubSpeclMaster Where Specialization_Name=@specName Order By Sub_Specialization";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@specName", ddl_country.Text);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -146,7 +148,12 @@ public partial class Admin_Sub_SubSpeclMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into Sub_SubSpeclMaster(Sr_No, Specialization_Name, Sub_Specialization, Sub_Sub_Specialization) values('" + txtcomm_id.Text + "','" + ddl_country.Text + "','" + ddl_state.Text + "','" + txtlabel_name.Text + "')";
+            cmd.CommandText = "Insert into Sub_SubSpeclMaster(Sr_No, Specialization_Name, Sub_Specialization, Sub_Sub_Specialization) values(@srNo,@specName,@subSpec,@subSubSpec)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@srNo", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@specName", ddl_country.Text);
+            cmd.Parameters.AddWithValue("@subSpec", ddl_state.Text);
+            cmd.Parameters.AddWithValue("@subSubSpec", txtlabel_name.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";

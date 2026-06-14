@@ -106,7 +106,11 @@ public partial class Admin_SubSpeclMaster : System.Web.UI.Page
         {
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "Insert into SubSpeclMaster(Sr_No, Specialization_Name,Sub_Specialization) values('" + txtcomm_id.Text + "','"+ddlspec.SelectedItem.Text+"','" + txtlabel_name.Text + "')";
+            cmd.CommandText = "Insert into SubSpeclMaster(Sr_No, Specialization_Name,Sub_Specialization) values(@srNo,@specName,@subSpecName)";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@srNo", txtcomm_id.Text);
+            cmd.Parameters.AddWithValue("@specName", ddlspec.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@subSpecName", txtlabel_name.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             string jv = "<script>alert('Record has been saved!!!');</script>";

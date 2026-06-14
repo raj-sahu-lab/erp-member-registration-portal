@@ -20,9 +20,8 @@
          <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
          <asp:BoundField DataField="Login_ID" HeaderText="Login_ID" ReadOnly="True" 
              SortExpression="Login_ID" />
-         <asp:BoundField DataField="Password" HeaderText="Password" 
-             SortExpression="Password" />
-         <asp:BoundField DataField="Login_Type" HeaderText="Login_Type" 
+         <%-- Password column removed: do not expose hashed passwords in admin grid --%>
+         <asp:BoundField DataField="Login_Type" HeaderText="Login_Type"
              SortExpression="Login_Type" />
          <asp:BoundField DataField="Security_Hint" HeaderText="Security_Hint" 
              SortExpression="Security_Hint" />

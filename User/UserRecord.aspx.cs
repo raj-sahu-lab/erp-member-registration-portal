@@ -36,7 +36,9 @@ public partial class User_UserRecord : System.Web.UI.Page
             string u_id = Session["Login_ID"].ToString();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["BITRSS"].ConnectionString.Trim();
             con.Open();
-            cmd.CommandText = "select * from MLMRegistration where Upliner_ID='" + u_id + "'";
+            cmd.CommandText = "select * from MLMRegistration where Upliner_ID=@uplId";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@uplId", u_id);
             cmd.Connection = con;
             dr = cmd.ExecuteReader();
             if (dr.Read())
@@ -253,7 +255,48 @@ public partial class User_UserRecord : System.Web.UI.Page
             cmd.Connection = con;
             cmd.Transaction = transaction;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Update MLMRegistration Set Sponsor_ID='" + txtsponsor_no.Text + "',Plan_No='0',Binary_Side='" + ddl_binary_side.Text + "',Name_Title='" + ddl_head1.Text + "',Name='" + txtuser_name.Text + "',DOB='" + txtuser_dob.Text + "',F_H_Name='" + txtf_h_name.Text + "',Postal_Address='" + txtaddress.Text + "',Email='" + txtemail.Text + "',City='" + txtcity.Text + "',State='" + txtstate.Text + "',Pin_Code='" + txtpincode.Text + "',Contact_No='" + txtmobile_no.Text + "',Sex='" + ddl_sex.Text + "',Nationality='" + ddlnationality.Text + "',Nominee_Title='" + ddl_head2.Text + "',Nominee_Name='" + txtnominee_name.Text + "',Nominee_DOB='" + txtnominee_dob.Text + "',Relation='" + ddlrelation.Text + "',Registration_Date='" + regDate + "',Acc_Holder_Name='" + txtac_holder_name.Text + "',Account_No='" + txtacc_no.Text + "',Bank_Branch_Name='" + txtbank_name.Text + "',Bank_IFSC_Code='" + txtifsc_code.Text + "',Pan_No='" + txtpan_no.Text + "',ID_Proof='" + ddlid_proof.Text + "',Address_Proof='" + ddladdress_proof.Text + "',Speel_SponsorName='" + txtspil_sponsorname.Text + "',Speel_SponsorNo='" + txtspil_sponsorno.Text + "',Proposer_Type='NONE',Sponsor_Name='" + txtsponsor_name.Text + "',Branch_Name='" + txtbranch_name.Text + "' Where Upliner_ID='" + txtuser_id.Text + "'";
+            cmd.CommandText = @"Update MLMRegistration Set Sponsor_ID=@sponsorId,Plan_No='0',Binary_Side=@binarySide,
+Name_Title=@nameTitle,Name=@name,DOB=@dob,F_H_Name=@fhName,Postal_Address=@postalAddr,
+Email=@email,City=@city,State=@state,Pin_Code=@pinCode,Contact_No=@contactNo,Sex=@sex,
+Nationality=@nationality,Nominee_Title=@nomineeTitle,Nominee_Name=@nomineeName,
+Nominee_DOB=@nomineeDob,Relation=@relation,Registration_Date=@regDate,
+Acc_Holder_Name=@accHolder,Account_No=@accNo,Bank_Branch_Name=@bankBranch,
+Bank_IFSC_Code=@ifsc,Pan_No=@panNo,ID_Proof=@idProof,Address_Proof=@addrProof,
+Speel_SponsorName=@speelSponsorName,Speel_SponsorNo=@speelSponsorNo,
+Proposer_Type='NONE',Sponsor_Name=@sponsorName,Branch_Name=@branchName
+Where Upliner_ID=@uplId";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@sponsorId", txtsponsor_no.Text);
+            cmd.Parameters.AddWithValue("@binarySide", ddl_binary_side.Text);
+            cmd.Parameters.AddWithValue("@nameTitle", ddl_head1.Text);
+            cmd.Parameters.AddWithValue("@name", txtuser_name.Text);
+            cmd.Parameters.AddWithValue("@dob", txtuser_dob.Text);
+            cmd.Parameters.AddWithValue("@fhName", txtf_h_name.Text);
+            cmd.Parameters.AddWithValue("@postalAddr", txtaddress.Text);
+            cmd.Parameters.AddWithValue("@email", txtemail.Text);
+            cmd.Parameters.AddWithValue("@city", txtcity.Text);
+            cmd.Parameters.AddWithValue("@state", txtstate.Text);
+            cmd.Parameters.AddWithValue("@pinCode", txtpincode.Text);
+            cmd.Parameters.AddWithValue("@contactNo", txtmobile_no.Text);
+            cmd.Parameters.AddWithValue("@sex", ddl_sex.Text);
+            cmd.Parameters.AddWithValue("@nationality", ddlnationality.Text);
+            cmd.Parameters.AddWithValue("@nomineeTitle", ddl_head2.Text);
+            cmd.Parameters.AddWithValue("@nomineeName", txtnominee_name.Text);
+            cmd.Parameters.AddWithValue("@nomineeDob", txtnominee_dob.Text);
+            cmd.Parameters.AddWithValue("@relation", ddlrelation.Text);
+            cmd.Parameters.AddWithValue("@regDate", regDate);
+            cmd.Parameters.AddWithValue("@accHolder", txtac_holder_name.Text);
+            cmd.Parameters.AddWithValue("@accNo", txtacc_no.Text);
+            cmd.Parameters.AddWithValue("@bankBranch", txtbank_name.Text);
+            cmd.Parameters.AddWithValue("@ifsc", txtifsc_code.Text);
+            cmd.Parameters.AddWithValue("@panNo", txtpan_no.Text);
+            cmd.Parameters.AddWithValue("@idProof", ddlid_proof.Text);
+            cmd.Parameters.AddWithValue("@addrProof", ddladdress_proof.Text);
+            cmd.Parameters.AddWithValue("@speelSponsorName", txtspil_sponsorname.Text);
+            cmd.Parameters.AddWithValue("@speelSponsorNo", txtspil_sponsorno.Text);
+            cmd.Parameters.AddWithValue("@sponsorName", txtsponsor_name.Text);
+            cmd.Parameters.AddWithValue("@branchName", txtbranch_name.Text);
+            cmd.Parameters.AddWithValue("@uplId", txtuser_id.Text);
             cmd.Connection = con;
             cmd.ExecuteNonQuery();           
             string jv1 = "<script>alert('Record has been Updated');</script>";
