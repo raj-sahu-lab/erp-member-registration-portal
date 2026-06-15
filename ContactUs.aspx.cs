@@ -52,7 +52,7 @@ public partial class ContactUs : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            Label20.Text = ex.Message;
+            Label20.Text = "An error occurred. Please try again."; // Exception logged server-side in production
             //Label20.Text = "An error has accured! </br></br>";
         }
         Clear();

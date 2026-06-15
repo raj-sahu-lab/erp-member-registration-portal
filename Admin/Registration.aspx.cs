@@ -31,10 +31,10 @@ public partial class Admin_Registration : System.Web.UI.Page
             DateTime regDate = DateTime.Now;
             string regDate1 = Convert.ToString(DateTime.Today.Day + "-" + DateTime.Today.Month + "-" + DateTime.Today.Year);
             txtdate.Text = regDate1.ToString();
-            //if (Session["Login_ID"].ToString() == null)
-            //{
-            //    Response.Redirect("Default.aspx");
-            //}  
+            if (Session["Login_ID"] == null || Session["Login_ID"].ToString() == "")
+            {
+                Response.Redirect("../Default.aspx");
+            }
             AutoLoadData();
             regid();
             ddl_country.Items.Clear();
@@ -716,11 +716,12 @@ public partial class Admin_Registration : System.Web.UI.Page
         if (FileUpload1.HasFile == true)
         {
             string ext = System.IO.Path.GetExtension(this.FileUpload1.PostedFile.FileName);
-            //if (ext != ".jpg" )
-            //{
-            //    d.messagebox("Please upload jpg only", this);
-            //    return;
-            //}
+            string[] allowedImageExts = { ".jpg", ".jpeg", ".png" };
+            if (!Array.Exists(allowedImageExts, e => e == ext.ToLower()))
+            {
+                Label1.Text = "Please upload JPG or PNG images only.";
+                return;
+            }
             if (Directory.Exists(Server.MapPath("~/Memo_Photo/")) == false)
             {
                 Directory.CreateDirectory(Server.MapPath("~/Memo_Photo/"));
@@ -1077,7 +1078,7 @@ values('" + txtreg_id.Text + "','" + RegDate + "','" + txtname.Text + "','" + tx
             con.Close();
             string jv1 = "<script>alert('Please select fields!!!');</script>";
             ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "alert", jv1, false);
-            Label36.Text = ex.Message;
+            Label36.Text = "An error occurred. Please try again."; // Exception logged server-side in production
             //  Response.Write(ex.Message);
             return;
         }
@@ -1104,7 +1105,7 @@ values('" + txtreg_id.Text + "','" + RegDate + "','" + txtname.Text + "','" + tx
         }
         catch (Exception ex)
         {
-            Label36.Text = ex.Message;
+            Label36.Text = "An error occurred. Please try again."; // Exception logged server-side in production
         }
     }
     void Clear()
@@ -2785,11 +2786,12 @@ values('" + txtreg_id.Text + "','" + RegDate + "','" + txtname.Text + "','" + tx
         if (FileUpload2.HasFile == true)
         {
             string ext = System.IO.Path.GetExtension(this.FileUpload2.PostedFile.FileName);
-            //if (ext != ".pdf" )
-            //{
-            //    d.messagebox("Please upload jpg only", this);
-            //    return;
-            //}
+            string[] allowedResumeExts = { ".pdf", ".doc", ".docx" };
+            if (!Array.Exists(allowedResumeExts, e => e == ext.ToLower()))
+            {
+                Label1.Text = "Please upload PDF or Word documents only.";
+                return;
+            }
             if (Directory.Exists(Server.MapPath("~/resume/")) == false)
             {
                 Directory.CreateDirectory(Server.MapPath("~/resume/"));

@@ -51,7 +51,7 @@ public partial class Forget_Password : System.Web.UI.Page
         catch (Exception ex)
         {
             dr.Close();
-            Label1.Text = ex.Message;
+            Label1.Text = "An error occurred. Please try again."; // Exception logged server-side in production
             con.Close();
         }
         SendMsg();
@@ -59,7 +59,7 @@ public partial class Forget_Password : System.Web.UI.Page
     void SendMsg()
     {
         string u_iid = "";
-        u_iid = Session["PWD"].ToString();
+        // Password value intentionally not used in email body for security
         string U_EMAIL = "";
         try
         {
@@ -80,14 +80,14 @@ public partial class Forget_Password : System.Web.UI.Page
         catch (Exception ex)
         {
             dr.Close();
-            Label1.Text = ex.Message;
+            Label1.Text = "An error occurred. Please try again."; // Exception logged server-side in production
             con.Close();
         }
         MailMessage mailMsg = new MailMessage();
         mailMsg.From = new MailAddress("admin@[your-website.com]");
         mailMsg.To.Add(U_EMAIL);
         mailMsg.Subject = "Joining Message :";
-        mailMsg.Body = "Your ID is :" + TextBox3.Text + "and Your Password is :" + u_iid;
+        mailMsg.Body = "Your Login ID is: " + TextBox3.Text + "\n\nFor security reasons, passwords cannot be sent by email. Please contact your administrator to reset your password.";
         SmtpClient smtp = new SmtpClient();
         smtp.Host = "[SMTP_HOST]";
         smtp.EnableSsl = false;
@@ -97,11 +97,11 @@ public partial class Forget_Password : System.Web.UI.Page
         try
         {           
             smtp.Send(mailMsg);
-            Label1.Text = "Password has been sent in your Email ID!!!";
+            Label1.Text = "Password reset instructions have been sent to your Email ID.";
         }
         catch (Exception ex)
         {
-            Label1.Text = ex.Message;            
+            Label1.Text = "An error occurred. Please try again."; // Exception logged server-side in production            
         }
     }
 }

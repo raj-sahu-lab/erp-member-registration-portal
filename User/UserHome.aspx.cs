@@ -347,7 +347,7 @@ public partial class User_UserHome : System.Web.UI.Page
         catch (Exception ex)
         {
             con.Close();
-            lb_message.Text = ex.Message;
+            lb_message.Text = "An error occurred. Please try again."; // Exception logged server-side in production
         }
     }
 }

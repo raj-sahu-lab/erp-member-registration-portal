@@ -20,15 +20,15 @@ public partial class Admin_ReportMasterPage : System.Web.UI.MasterPage
     SqlDataReader dr;
     protected void Page_Load(object sender, EventArgs e)
     {        
-        //if (Session["Login_ID"].ToString() == null)
-        //{
-        //    Response.Redirect("../Default.aspx");
-        //}
-        //else
-        //{
-        //    lb_Welcome.Text = "Welcome :";
-        //    lb_UserID.Text = Session["Login_ID"].ToString();
-        //    lnk_Logout.Text = "Logout";        
+        if (Session["Login_ID"] == null || Session["Login_ID"].ToString() == "")
+        {
+            Response.Redirect("../Default.aspx");
+        }
+        else
+        {
+            lb_Welcome.Text = "Welcome :";
+            lb_UserID.Text = Session["Login_ID"].ToString();
+            lnk_Logout.Text = "Logout";
         }
     protected void lnk_btn_Click(object sender, EventArgs e)
     {

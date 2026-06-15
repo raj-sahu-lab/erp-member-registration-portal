@@ -23,10 +23,10 @@ public partial class Admin_AdminHome : System.Web.UI.Page
         if (!IsPostBack)
         {
             DateTime curr_date = DateTime.Now;
-            //if (Session["Login_ID"].ToString() == null)
-            //{
-            //    Response.Redirect("Default.aspx");
-            //}           
+            if (Session["Login_ID"] == null || Session["Login_ID"].ToString() == "")
+            {
+                Response.Redirect("../Default.aspx");
+            }
         }
     }   
 }

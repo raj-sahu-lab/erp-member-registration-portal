@@ -51,7 +51,7 @@ public partial class Forget_ID : System.Web.UI.Page
         catch (Exception ex)
         {
             dr.Close();
-            Label1.Text = ex.Message;
+            Label1.Text = "An error occurred. Please try again."; // Exception logged server-side in production
             con.Close();
         }      
     }

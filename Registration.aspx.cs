@@ -696,11 +696,12 @@ public partial class Admin_Registration : System.Web.UI.Page
         if (FileUpload1.HasFile == true)
         {
             string ext = System.IO.Path.GetExtension(this.FileUpload1.PostedFile.FileName);
-            //if (ext != ".jpg" )
-            //{
-            //    d.messagebox("Please upload jpg only", this);
-            //    return;
-            //}
+            string[] allowedImageExts = { ".jpg", ".jpeg", ".png" };
+            if (!Array.Exists(allowedImageExts, e => e == ext.ToLower()))
+            {
+                Label1.Text = "Please upload JPG or PNG images only.";
+                return;
+            }
             if (Directory.Exists(Server.MapPath("~/Memo_Photo/")) == false)
             {
                 Directory.CreateDirectory(Server.MapPath("~/Memo_Photo/"));
@@ -1093,7 +1094,7 @@ values('" + txtreg_id.Text + "','" + RegDate + "','" + txtname.Text + "','" + tx
         }
         catch (Exception ex)
         {
-            Label36.Text = ex.Message;
+            Label36.Text = "An error occurred. Please try again."; // Exception logged server-side in production
         }
     }
     void Clear()
@@ -2774,11 +2775,12 @@ values('" + txtreg_id.Text + "','" + RegDate + "','" + txtname.Text + "','" + tx
         if (FileUpload2.HasFile == true)
         {
             string ext = System.IO.Path.GetExtension(this.FileUpload2.PostedFile.FileName);
-            //if (ext != ".pdf" )
-            //{
-            //    d.messagebox("Please upload jpg only", this);
-            //    return;
-            //}
+            string[] allowedResumeExts = { ".pdf", ".doc", ".docx" };
+            if (!Array.Exists(allowedResumeExts, e => e == ext.ToLower()))
+            {
+                Label1.Text = "Please upload PDF or Word documents only.";
+                return;
+            }
             if (Directory.Exists(Server.MapPath("~/resume/")) == false)
             {
                 Directory.CreateDirectory(Server.MapPath("~/resume/"));

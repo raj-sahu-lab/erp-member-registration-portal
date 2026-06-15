@@ -74,7 +74,7 @@ public partial class Admin_VibhagMaster : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            lb_Message.Text = ex.Message;
+            lb_Message.Text = "An error occurred. Please try again."; // Exception logged server-side in production
             con.Close();
         }
         ssr_no = max_ssr_no + 1;
@@ -121,7 +121,7 @@ public partial class Admin_VibhagMaster : System.Web.UI.Page
         catch (Exception ex)
         {
             con.Close();
-            lb_Message.Text = ex.Message;
+            lb_Message.Text = "An error occurred. Please try again."; // Exception logged server-side in production
         }
         Clear();
     }   

@@ -26,10 +26,10 @@ public partial class Admin_Report_AreaWise : System.Web.UI.Page
             string regDate1 = Convert.ToString(DateTime.Today.Day + "-" + DateTime.Today.Month + "-" + DateTime.Today.Year);           
             txtfrom_date.Text = regDate1.ToString();
             txtto_date.Text = regDate1.ToString();
-            //if (Session["Login_ID"].ToString() == null)
-            //{
-            //    Response.Redirect("Default.aspx");
-            //}            
+            if (Session["Login_ID"] == null || Session["Login_ID"].ToString() == "")
+            {
+                Response.Redirect("../Default.aspx");
+            }
             Upliner_Details();           
         }
     }
