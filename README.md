@@ -1,4 +1,4 @@
-# Member Registration Portal — ERP System
+# Member Registration Portal — ERP System (2016)
 
 > **Built:** 2015 · ASP.NET 3.5 WebForms · C# · SQL Server
 >
@@ -61,7 +61,3 @@ A comprehensive web-based member registration and management system built for or
 ## Note
 
 Built as a production system for managing large-scale member registrations across multiple geographic regions. Handles thousands of member records with hierarchical organizational tracking.
-
----
-
-© 2015 Raj Sahu
