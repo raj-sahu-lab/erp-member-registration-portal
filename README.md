@@ -1,5 +1,9 @@
 # Member Registration Portal — ERP System
 
+> **Built:** 2015 · ASP.NET 3.5 WebForms · C# · SQL Server
+>
+> This project was built in 2015 as a production member registration portal managing multi-level membership hierarchies for a real organisation. The codebase has been updated (June 2026) with full SQL parameterisation across 52 files (~250 queries), PBKDF2 password hashing with backward-compatible migration from legacy plaintext, and removal of password exposure in the admin panel.
+
 A comprehensive web-based member registration and management system built for organizations to track members across geographic hierarchies with detailed profiling, reporting, and admin capabilities.
 
 > **Note:** This is a 2014–2015 portfolio codebase. Authentication uses direct SQL queries (pre-parameterization era) and passwords are stored without modern hashing — these would be the first things hardened before any production deployment today.
